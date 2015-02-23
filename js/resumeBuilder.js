@@ -14,7 +14,8 @@ var bio = {"name" : "Sebastian Ortiz",
         var twitter = HTMLtwitter.replace("%data%", bio.contacts.email);
         var github = HTMLgithub.replace("%data%", bio.contacts.email);
         var myLocation = HTMLlocation.replace("%data%", bio.contacts.location);
-        $("#topContacts").append(phoneNumber).append(email).append(twitter).append(github).append(myLocation);
+        $("#topContacts").append(phoneNumber).append(email).append(github).append(twitter).append(myLocation);
+        $("#footerContacts").append(phoneNumber).append(email).append(github).append(twitter).append(myLocation);
         
         myName = HTMLheaderName.replace("%data%", bio.name);
         myRole = HTMLheaderRole.replace("%data%",bio.role);
@@ -82,6 +83,17 @@ var education = {
                 }
                 console.log(schoolName);
                 console.log(len);
+            }
+            $("#education").append(HTMLonlineClasses);
+            for(var course = 0, courseLen = education.onlineCourses.length;course<courseLen;course++){
+                $("#education").append(HTMLschoolStart);
+                var courseTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+                var courseSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+                var courseDate = HTMLonlineDates.replace("%data%", education.onlineCourses[course].date);
+                var courseURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+                $(".education-entry:last").append(courseTitle+courseSchool);
+                $(".education-entry:last").append(courseDate);
+                $(".education-entry:last").append(courseURL);
             }
         } 
 }
