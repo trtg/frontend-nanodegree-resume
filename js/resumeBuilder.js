@@ -66,8 +66,23 @@ var education = {
         }
     ],
         display: function() {
-            //var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
-            //$(".work-entry:last").append(formattedLocation);
+
+            for(var school = 0, len = education.schools.length;school<len;school++){
+                $("#education").append(HTMLschoolStart);
+                var schoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
+                var schoolDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+                var schoolDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+                var schoolLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+                $(".education-entry:last").append(schoolName+schoolDegree);
+                $(".education-entry:last").append(schoolDates);
+                $(".education-entry:last").append(schoolLocation);
+                for(var mIndex = 0, lenMajors = education.schools[school].majors.length;mIndex<lenMajors;mIndex++){
+                    var schoolMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors[mIndex]);
+                    $(".education-entry:last").append(schoolMajor);
+                }
+                console.log(schoolName);
+                console.log(len);
+            }
         } 
 }
 var work = { "jobs":[{"employer": "Agilent/Avago",
