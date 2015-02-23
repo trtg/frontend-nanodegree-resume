@@ -165,3 +165,7 @@ bio.display();
 work.display();
 projects.display();
 education.display();
+
+//add the map div before the javascript in index.html
+//hides the map section
+$("#mapDiv").append(googleMap);
